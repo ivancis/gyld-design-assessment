@@ -81,12 +81,14 @@ pnpm test
   - `Rewards & Punishments`
   - `Membership`
   - `Game Management`
+- you are free to meaningfully restructure the page and included flows, as long as the core control-panel experience remains recognizable
 - no backend or real API wiring is expected for this assessment
 - the primary mocked interaction flows are:
   - `Start Event`
   - `Give Points`
   - `Take Points`
 - other actions may be expanded if useful, but they do not need full backend-realistic implementations
+- the implementation should remain usable down to roughly `400px` width
 
 ## Lint constraints
 
