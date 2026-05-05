@@ -1,0 +1,279 @@
+.control-panel-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pause-banner,
+.section-shell,
+.modal-shell {
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+}
+
+.pause-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  color: #f9fafb;
+}
+
+.pause-banner--pause {
+  background: #7f1d1d;
+}
+
+.pause-banner--give {
+  background: #14532d;
+}
+
+.pause-banner--take {
+  background: #9a3412;
+}
+
+.section-header,
+.action-tile,
+.modal-close,
+.mode-switch button,
+.primary-button,
+.danger-button {
+  appearance: none;
+  border: none;
+  font: inherit;
+}
+
+.sections-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-shell {
+  overflow: hidden;
+  background: #111827;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  background: #1f2937;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.section-header__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 600;
+}
+
+.section-icon {
+  font-size: 1rem;
+}
+
+.section-chevron {
+  transition: transform 140ms ease;
+}
+
+.section-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.section-content {
+  padding: 0.85rem;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.action-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 5rem;
+  padding: 0.8rem;
+  border-radius: 0.65rem;
+  border: 1px solid #d1d5db;
+  background: #f3f4f6;
+  color: #374151;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background-color 120ms ease;
+}
+
+.action-tile:hover {
+  transform: translateY(-1px);
+  background: #e5e7eb;
+}
+
+.action-tile.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.action-tile__icon {
+  font-size: 1.1rem;
+}
+
+.action-tile__label {
+  font-size: 0.78rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.modal-shell {
+  width: min(42rem, 100%);
+  padding: 1.25rem;
+  background: #111827;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-eyebrow {
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.modal-close {
+  color: #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mode-switch {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: #1f2937;
+}
+
+.mode-switch button {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  color: #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mode-switch__active {
+  background: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.wizard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.wizard-copy {
+  color: #cbd5e1;
+}
+
+.wizard-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #374151;
+  border-radius: 0.65rem;
+  background: #0f172a;
+  color: #f9fafb;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+.review-card strong {
+  color: #f9fafb;
+}
+
+.primary-button,
+.danger-button {
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border-radius: 0.65rem;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+.danger-button {
+  background: #991b1b;
+  color: #f9fafb;
+}
+
+@media (min-width: 900px) {
+  .action-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .pause-banner,
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wizard-row {
+    grid-template-columns: 1fr;
+  }
+}
