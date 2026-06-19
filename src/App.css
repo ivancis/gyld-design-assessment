@@ -46,11 +46,11 @@
 
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--text-strong);
+  box-shadow: 0 0 0 2px var(--text-strong), 0 0 0px 4px var(--accent-primary);
 }
 
 .action-tile:focus-visible {
-  box-shadow: 0 0 0 2px var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--text-strong), 0 0 0 4px var(--accent-primary);
 }
 
 .sections-stack {
@@ -149,15 +149,6 @@
   text-wrap: balance;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 1.5rem;
-  background: oklch(0.13 0.027 264 / 0.72);
-}
-
 @keyframes modal-in {
   from {
     opacity: 0;
@@ -170,11 +161,22 @@
 }
 
 .modal-shell {
-  width: min(42rem, 100%);
+  width: min(42rem, calc(100% - 3rem));
   padding: 1.25rem;
   background: var(--surface-section);
-  box-shadow: 0 24px 48px oklch(0 0 0 / 0.35);
+  box-shadow: 0 0.5rem 1rem var(--surface-backdrop);
   animation: modal-in var(--transition-moderate);
+}
+
+dialog.modal-shell {
+  border: none;
+  margin: auto;
+  max-height: calc(100dvh - 3rem);
+  overflow-y: auto;
+}
+
+dialog.modal-shell::backdrop {
+  background: var(--surface-backdrop);
 }
 
 .modal-header {

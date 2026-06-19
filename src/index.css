@@ -55,6 +55,7 @@ html {
   --surface-section: var(--neutral-900);
   --surface-header:  var(--neutral-800);
   --surface-input:   oklch(0.17 0.024 261);
+  --surface-backdrop:   oklch(0.13 0.027 264 / 0.72);
 
   /* ── Semantic border ─────────────────────────────────────── */
   --border-default: var(--neutral-700);
