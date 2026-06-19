@@ -69,6 +69,25 @@ html {
   /* ── Semantic accent ─────────────────────────────────────── */
   --accent-primary: var(--blue-600);
   --accent-eyebrow: var(--blue-300);
+
+  /* ── Border radius ──────────────────────────────────────── */
+  --radius-sm:   0.4rem;
+  --radius-md:   0.65rem;
+  --radius-lg:   0.75rem;
+  --radius-pill: 999px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --easing-base:         ease;
+  --duration-fast:       120ms;
+  --duration-base:       140ms;
+  --duration-moderate:   160ms;
+  --transition-fast:     var(--duration-fast)     var(--easing-base);
+  --transition-base:     var(--duration-base)     var(--easing-base);
+  --transition-moderate: var(--duration-moderate) var(--easing-base);
+  --scale-press: 0.96;
+
+  /* ── Interaction ────────────────────────────────────────── */
+  --min-hit-area: 2.5rem;
 }
 
 * {
@@ -109,6 +128,7 @@ h1 {
 h2 {
   font-size: 1.35rem;
   color: var(--text-strong);
+  text-wrap: balance;
 }
 
 h3,

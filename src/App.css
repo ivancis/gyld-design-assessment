@@ -8,7 +8,7 @@
 .section-shell,
 .modal-shell {
   border: 1px solid var(--border-default);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
 }
 
 .pause-banner {
@@ -87,7 +87,7 @@
 }
 
 .section-chevron {
-  transition: transform 140ms ease;
+  transition: transform var(--transition-base);
 }
 
 .section-chevron.is-open {
@@ -112,14 +112,14 @@
   gap: 0.35rem;
   min-height: 5rem;
   padding: 0.8rem;
-  border-radius: 0.65rem;
+  border-radius: var(--radius-md);
   border: 1px solid var(--neutral-300);
   background: var(--neutral-100);
   color: var(--neutral-700);
   cursor: pointer;
   transition:
-    transform 120ms ease,
-    background-color 120ms ease;
+    transform var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 @media (hover: hover) {
@@ -127,6 +127,10 @@
     transform: translateY(-1px);
     background: var(--neutral-200);
   }
+}
+
+.action-tile:active {
+  transform: scale(var(--scale-press));
 }
 
 .action-tile.is-disabled {
@@ -142,6 +146,7 @@
   font-size: 0.78rem;
   text-align: center;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 .modal-backdrop {
@@ -156,7 +161,7 @@
 @keyframes modal-in {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: scale(var(--scale-press));
   }
   to {
     opacity: 1;
@@ -169,7 +174,7 @@
   padding: 1.25rem;
   background: var(--surface-section);
   box-shadow: 0 24px 48px oklch(0 0 0 / 0.35);
-  animation: modal-in 160ms ease;
+  animation: modal-in var(--transition-moderate);
 }
 
 .modal-header {
@@ -189,9 +194,29 @@
 }
 
 .modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--min-hit-area);
+  min-height: var(--min-hit-area);
+  padding: 0 0.5rem;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
   background: transparent;
   cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .modal-close:hover {
+    background: oklch(1 0 0 / 0.06);
+  }
+}
+
+.modal-close:active {
+  transform: scale(var(--scale-press));
 }
 
 .mode-switch {
@@ -199,16 +224,24 @@
   gap: 0.35rem;
   margin-top: 1rem;
   padding: 0.25rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--surface-header);
 }
 
 .mode-switch button {
   padding: 0.5rem 0.8rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   color: var(--text-muted);
   background: transparent;
   cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.mode-switch button:active {
+  transform: scale(var(--scale-press));
 }
 
 .mode-switch__active {
@@ -223,8 +256,15 @@
   margin-top: 1rem;
 }
 
+.wizard-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .wizard-copy {
   color: var(--text-muted);
+  text-wrap: pretty;
 }
 
 .wizard-row {
@@ -246,10 +286,14 @@
 .form-field textarea {
   padding: 0.7rem 0.8rem;
   border: 1px solid var(--border-default);
-  border-radius: 0.65rem;
+  border-radius: var(--radius-sm);
   background: var(--surface-input);
   color: var(--neutral-50);
   font-size: 1rem;
+}
+
+input[type="number"] {
+  font-variant-numeric: tabular-nums;
 }
 
 .review-card {
@@ -258,7 +302,7 @@
   gap: 0.35rem;
   padding: 0.9rem 1rem;
   border: 1px solid var(--border-default);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-sm);
   background: var(--surface-input);
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
@@ -272,8 +316,11 @@
 .danger-button {
   align-self: flex-start;
   padding: 0.7rem 1rem;
-  border-radius: 0.65rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
 }
 
 .primary-button {
@@ -284,6 +331,18 @@
 .danger-button {
   background: var(--status-danger);
   color: var(--neutral-50);
+}
+
+@media (hover: hover) {
+  .primary-button:hover,
+  .danger-button:hover {
+    filter: brightness(1.15);
+  }
+}
+
+.primary-button:active,
+.danger-button:active {
+  transform: scale(var(--scale-press));
 }
 
 @media (min-width: 900px) {
