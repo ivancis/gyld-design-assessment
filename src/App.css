@@ -82,10 +82,6 @@
   font-weight: 600;
 }
 
-.section-icon {
-  font-size: 1rem;
-}
-
 .section-chevron {
   transition: transform var(--transition-base);
 }
@@ -246,9 +242,9 @@ dialog.modal-shell::backdrop {
   transform: scale(var(--scale-press));
 }
 
-.mode-switch__active {
-  background: var(--neutral-700) !important;
-  color: var(--neutral-50) !important;
+.mode-switch button.mode-switch__active {
+  background: var(--neutral-700);
+  color: var(--neutral-50);
 }
 
 .wizard-body {
@@ -291,7 +287,6 @@ dialog.modal-shell::backdrop {
   border-radius: var(--radius-sm);
   background: var(--surface-input);
   color: var(--neutral-50);
-  font-size: 1rem;
 }
 
 input[type="number"] {
