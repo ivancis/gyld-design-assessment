@@ -7,7 +7,7 @@
 .pause-banner,
 .section-shell,
 .modal-shell {
-  border: 1px solid #374151;
+  border: 1px solid var(--border-default);
   border-radius: 0.75rem;
 }
 
@@ -17,19 +17,19 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem;
-  color: #f9fafb;
+  color: var(--neutral-50);
 }
 
 .pause-banner--pause {
-  background: #7f1d1d;
+  background: var(--status-danger);
 }
 
 .pause-banner--give {
-  background: #14532d;
+  background: var(--status-success);
 }
 
 .pause-banner--take {
-  background: #9a3412;
+  background: var(--status-warning);
 }
 
 .section-header,
@@ -46,7 +46,7 @@
 
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #2563eb;
+  box-shadow: 0 0 0 2px var(--accent-primary);
 }
 
 .sections-stack {
@@ -57,7 +57,7 @@
 
 .section-shell {
   overflow: hidden;
-  background: #111827;
+  background: var(--surface-section);
 }
 
 .section-header {
@@ -66,8 +66,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1rem;
-  background: #1f2937;
-  color: #e5e7eb;
+  background: var(--surface-header);
+  color: var(--text-body);
   cursor: pointer;
 }
 
@@ -109,9 +109,9 @@
   min-height: 5rem;
   padding: 0.8rem;
   border-radius: 0.65rem;
-  border: 1px solid #d1d5db;
-  background: #f3f4f6;
-  color: #374151;
+  border: 1px solid var(--neutral-300);
+  background: var(--neutral-100);
+  color: var(--neutral-700);
   cursor: pointer;
   transition:
     transform 120ms ease,
@@ -121,7 +121,7 @@
 @media (hover: hover) {
   .action-tile:hover {
     transform: translateY(-1px);
-    background: #e5e7eb;
+    background: var(--neutral-200);
   }
 }
 
@@ -146,7 +146,7 @@
   display: grid;
   place-items: center;
   padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.72);
+  background: oklch(0.13 0.027 264 / 0.72);
 }
 
 @keyframes modal-in {
@@ -163,8 +163,8 @@
 .modal-shell {
   width: min(42rem, 100%);
   padding: 1.25rem;
-  background: #111827;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  background: var(--surface-section);
+  box-shadow: 0 24px 48px oklch(0 0 0 / 0.35);
   animation: modal-in 160ms ease;
 }
 
@@ -181,11 +181,11 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #93c5fd;
+  color: var(--accent-eyebrow);
 }
 
 .modal-close {
-  color: #cbd5e1;
+  color: var(--text-muted);
   background: transparent;
   cursor: pointer;
 }
@@ -196,20 +196,20 @@
   margin-top: 1rem;
   padding: 0.25rem;
   border-radius: 999px;
-  background: #1f2937;
+  background: var(--surface-header);
 }
 
 .mode-switch button {
   padding: 0.5rem 0.8rem;
   border-radius: 999px;
-  color: #cbd5e1;
+  color: var(--text-muted);
   background: transparent;
   cursor: pointer;
 }
 
 .mode-switch__active {
-  background: #374151 !important;
-  color: #f9fafb !important;
+  background: var(--neutral-700) !important;
+  color: var(--neutral-50) !important;
 }
 
 .wizard-body {
@@ -220,7 +220,7 @@
 }
 
 .wizard-copy {
-  color: #cbd5e1;
+  color: var(--text-muted);
 }
 
 .wizard-row {
@@ -233,7 +233,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  color: #cbd5e1;
+  color: var(--text-muted);
   font-size: 0.92rem;
 }
 
@@ -241,10 +241,10 @@
 .form-field select,
 .form-field textarea {
   padding: 0.7rem 0.8rem;
-  border: 1px solid #374151;
+  border: 1px solid var(--border-default);
   border-radius: 0.65rem;
-  background: #0f172a;
-  color: #f9fafb;
+  background: var(--surface-input);
+  color: var(--neutral-50);
   font-size: 1rem;
 }
 
@@ -253,15 +253,15 @@
   flex-direction: column;
   gap: 0.35rem;
   padding: 0.9rem 1rem;
-  border: 1px solid #374151;
+  border: 1px solid var(--border-default);
   border-radius: 0.75rem;
-  background: #0f172a;
-  color: #cbd5e1;
+  background: var(--surface-input);
+  color: var(--text-muted);
   font-variant-numeric: tabular-nums;
 }
 
 .review-card strong {
-  color: #f9fafb;
+  color: var(--neutral-50);
 }
 
 .primary-button,
@@ -273,13 +273,13 @@
 }
 
 .primary-button {
-  background: #2563eb;
-  color: #f9fafb;
+  background: var(--accent-primary);
+  color: var(--neutral-50);
 }
 
 .danger-button {
-  background: #991b1b;
-  color: #f9fafb;
+  background: var(--status-danger);
+  color: var(--neutral-50);
 }
 
 @media (min-width: 900px) {
