@@ -41,6 +41,12 @@
   appearance: none;
   border: none;
   font: inherit;
+  user-select: none;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #2563eb;
 }
 
 .sections-stack {
@@ -112,9 +118,11 @@
     background-color 120ms ease;
 }
 
-.action-tile:hover {
-  transform: translateY(-1px);
-  background: #e5e7eb;
+@media (hover: hover) {
+  .action-tile:hover {
+    transform: translateY(-1px);
+    background: #e5e7eb;
+  }
 }
 
 .action-tile.is-disabled {
@@ -141,11 +149,23 @@
   background: rgba(15, 23, 42, 0.72);
 }
 
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .modal-shell {
   width: min(42rem, 100%);
   padding: 1.25rem;
   background: #111827;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  animation: modal-in 160ms ease;
 }
 
 .modal-header {
@@ -225,6 +245,7 @@
   border-radius: 0.65rem;
   background: #0f172a;
   color: #f9fafb;
+  font-size: 1rem;
 }
 
 .review-card {
@@ -236,6 +257,7 @@
   border-radius: 0.75rem;
   background: #0f172a;
   color: #cbd5e1;
+  font-variant-numeric: tabular-nums;
 }
 
 .review-card strong {

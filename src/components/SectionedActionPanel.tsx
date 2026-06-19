@@ -29,6 +29,7 @@ export function SectionedActionPanel({
             <button
               type="button"
               className="section-header"
+              aria-expanded={isExpanded}
               onClick={() => onToggle(section.key)}
             >
               <div className="section-header__left">

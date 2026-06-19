@@ -1,3 +1,12 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.35);
+  color: #eff4ff;
+}
+
 :root {
   color: #dfe8f7;
   background:
