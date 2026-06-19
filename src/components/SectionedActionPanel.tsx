@@ -1,3 +1,4 @@
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type {
   ActionDefinition,
   ActionSection,
@@ -29,7 +30,9 @@ export function SectionedActionPanel({
             <button
               type="button"
               className="section-header"
+              aria-expanded={isExpanded}
               onClick={() => onToggle(section.key)}
+              title={`${isExpanded ? "Colapse" : "Expand"} ${section.title}`}
             >
               <div className="section-header__left">
                 <span className="section-icon" aria-hidden="true">
@@ -38,7 +41,7 @@ export function SectionedActionPanel({
                 <span>{section.title}</span>
               </div>
               <span className={`section-chevron ${isExpanded ? "is-open" : ""}`}>
-                ⌄
+                {isExpanded ? <ChevronUp /> : <ChevronDown />}
               </span>
             </button>
 

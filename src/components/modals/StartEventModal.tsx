@@ -45,100 +45,112 @@ export function StartEventModal({
         </button>
       </div>
 
-      {state.isQuickStart ? (
-        <>
-          <p className="wizard-copy">
-            Start a random event immediately with the same shortcut pattern as
-            the real control panel.
-          </p>
-          <button type="button" className="primary-button" onClick={onQuickStart}>
-            Start Event
-          </button>
-        </>
-      ) : (
-        <>
-          <label className="form-field">
-            <span>Event type</span>
-            <select
-              value={state.eventType}
-              onChange={(event) =>
-                setState((current) => ({
-                  ...current,
-                  eventType: event.target.value,
-                }))
-              }
-            >
-              {eventConstructs.map((construct) => (
-                <option key={construct.tag} value={construct.tag}>
-                  {construct.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <div className="wizard-row">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          state.isQuickStart ? onQuickStart() : onCustomStart();
+        }}
+      >
+        {state.isQuickStart ? (
+          <>
+            <p className="wizard-copy">
+              Start a random event immediately with the same shortcut pattern as
+              the real control panel.
+            </p>
+            <button type="submit" className="primary-button">
+              Start Event
+            </button>
+          </>
+        ) : (
+          <>
             <label className="form-field">
-              <span>First family</span>
+              <span>Event type</span>
               <select
-                value={state.selectedFamilyA}
+                autoComplete="off"
+                value={state.eventType}
                 onChange={(event) =>
                   setState((current) => ({
                     ...current,
-                    selectedFamilyA: event.target.value,
+                    eventType: event.target.value,
                   }))
                 }
               >
-                {families.map((family) => (
-                  <option key={family.identifier} value={family.identifier}>
-                    {family.name}
+                {eventConstructs.map((construct) => (
+                  <option key={construct.tag} value={construct.tag}>
+                    {construct.label}
                   </option>
                 ))}
               </select>
             </label>
+
+            <div className="wizard-row">
+              <label className="form-field">
+                <span>First family</span>
+                <select
+                  autoComplete="off"
+                  value={state.selectedFamilyA}
+                  onChange={(event) =>
+                    setState((current) => ({
+                      ...current,
+                      selectedFamilyA: event.target.value,
+                    }))
+                  }
+                >
+                  {families.map((family) => (
+                    <option key={family.identifier} value={family.identifier}>
+                      {family.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="form-field">
+                <span>Second family</span>
+                <select
+                  autoComplete="off"
+                  value={state.selectedFamilyB}
+                  onChange={(event) =>
+                    setState((current) => ({
+                      ...current,
+                      selectedFamilyB: event.target.value,
+                    }))
+                  }
+                >
+                  {families.map((family) => (
+                    <option key={family.identifier} value={family.identifier}>
+                      {family.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
             <label className="form-field">
-              <span>Second family</span>
-              <select
-                value={state.selectedFamilyB}
+              <span>Custom chat message</span>
+              <textarea
+                rows={4}
+                spellCheck={false}
+                autoComplete="off"
+                value={state.customMessage}
                 onChange={(event) =>
                   setState((current) => ({
                     ...current,
-                    selectedFamilyB: event.target.value,
+                    customMessage: event.target.value,
                   }))
                 }
-              >
-                {families.map((family) => (
-                  <option key={family.identifier} value={family.identifier}>
-                    {family.name}
-                  </option>
-                ))}
-              </select>
+              />
             </label>
-          </div>
 
-          <label className="form-field">
-            <span>Custom chat message</span>
-            <textarea
-              rows={4}
-              value={state.customMessage}
-              onChange={(event) =>
-                setState((current) => ({
-                  ...current,
-                  customMessage: event.target.value,
-                }))
-              }
-            />
-          </label>
+            <div className="review-card">
+              <strong>{selectedEvent?.label ?? "Selected event"}</strong>
+              <span>{selectedEvent?.description}</span>
+            </div>
 
-          <div className="review-card">
-            <strong>{selectedEvent?.label ?? "Selected event"}</strong>
-            <span>{selectedEvent?.description}</span>
-          </div>
-
-          <button type="button" className="primary-button" onClick={onCustomStart}>
-            Start Event
-          </button>
-        </>
-      )}
+            <button type="submit" className="primary-button">
+              Start Event
+            </button>
+          </>
+        )}
+      </form>
     </ModalFrame>
   );
 }

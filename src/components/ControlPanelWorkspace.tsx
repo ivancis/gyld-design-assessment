@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { mockActionSections, mockEventConstructs, mockFamilies, mockGuild } from "../mockData";
 import type { ActionDefinition, ActionSectionKey, FixtureKey } from "../types";
@@ -42,6 +42,9 @@ export function ControlPanelWorkspace({
     applyPointsAction,
   } = useControlPanelState(fixtureKey);
 
+  // showModal() gives focus-trap, Escape, and focus-restore
+  const openDialog = useCallback((node: HTMLDialogElement | null) => { node?.showModal(); }, []);
+
   const visibleSections = useMemo(
     () =>
       mockActionSections.map((section) => ({
@@ -76,8 +79,12 @@ export function ControlPanelWorkspace({
       />
 
       {modalState ? (
-        <div className="modal-backdrop" role="presentation" onClick={() => setModalState(null)}>
-          <div className="modal-shell" role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
+        <dialog
+          className="modal-shell"
+          ref={openDialog}
+          onCancel={(e) => { e.preventDefault(); setModalState(null); }}
+          onClick={(e) => { if (e.target === e.currentTarget) setModalState(null); }}
+        >
             {modalState.type === "startEvent" ? (
               <StartEventModal
                 state={startEventState}
@@ -122,8 +129,7 @@ export function ControlPanelWorkspace({
                 onClose={() => setModalState(null)}
               />
             ) : null}
-          </div>
-        </div>
+        </dialog>
       ) : null}
     </>
   );

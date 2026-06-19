@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import type { ReactNode } from "react";
 
 type ModalFrameProps = {
@@ -20,8 +21,8 @@ export function ModalFrame({
           <p className="modal-eyebrow">{eyebrow}</p>
           <h2>{title}</h2>
         </div>
-        <button type="button" className="modal-close" onClick={onClose}>
-          Close
+        <button type="button" className="modal-close" onClick={onClose} title="Close">
+          <X />
         </button>
       </div>
       <div className="wizard-body">{children}</div>
