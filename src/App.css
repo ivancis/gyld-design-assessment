@@ -46,6 +46,10 @@
 
 :focus-visible {
   outline: none;
+  box-shadow: 0 0 0 2px var(--text-strong);
+}
+
+.action-tile:focus-visible {
   box-shadow: 0 0 0 2px var(--accent-primary);
 }
 
