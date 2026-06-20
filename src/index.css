@@ -17,6 +17,7 @@ html {
   /* --neutral-500: oklch(0.544 0.015 255); */
   --neutral-700: oklch(0.374 0.014 255);
   --neutral-800: oklch(0.261 0.017 255);
+  --neutral-850: oklch(0.22 0.018 255);
   --neutral-900: oklch(0.179 0.013 255);
   --neutral-950: oklch(0.09  0.026 265);
 
@@ -32,14 +33,14 @@ html {
   /* --blue-700: oklch(0.395 0.198 264); */
 
   /* ── Status ─────────────────────────────────────────────── */
-  --status-danger:  oklch(0.258 0.105 22);
+  --status-danger:  oklch(0.258 0.105 1);
   --status-success: oklch(0.297 0.094 148);
   --status-warning: oklch(0.366 0.139 31);
 
   /* ── Semantic surface ────────────────────────────────────── */
   --surface-panel:   oklch(0.14 0.026 265 / 0.9);
   --surface-section: var(--neutral-900);
-  --surface-header:  var(--neutral-800);
+  --surface-header:  var(--neutral-900);
   --surface-input:   oklch(0.17 0.024 261);
   --surface-backdrop:   oklch(0.13 0.027 264 / 0.72);
 
