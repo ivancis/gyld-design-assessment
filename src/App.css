@@ -12,7 +12,7 @@
 
 .toaster {
   position: sticky;
-  top: 1rem;
+  bottom: 1rem;
   z-index: 1000;
   width: 100%;
 }
@@ -25,6 +25,39 @@
   padding: 1rem;
   color: var(--neutral-50);
   box-shadow: 0 0.5rem 1rem var(--surface-backdrop);
+}
+
+.pause-banner__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pause-banner__time {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.pause-banner__close {
+  appearance: none;
+  border: none;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  background: oklch(1 0 0 / 0.1);
+  color: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .pause-banner__close:hover {
+    background: oklch(1 0 0 / 0.2);
+  }
 }
 
 .pause-banner--pause {
@@ -97,6 +130,7 @@
 }
 
 .section-content {
+  display: grid;
   padding: 0.6rem;
 }
 
@@ -107,9 +141,8 @@
 }
 
 .action-tile {
-  flex: 1 1 auto;
-  min-width: 25%;
-  margin: auto;
+  flex: 1 0 auto;
+  width: 100%;
   gap: 1rem;
   display: flex;
   align-items: center;
@@ -383,6 +416,9 @@ input[type="number"] {
 }
 
 @media (max-width: 720px) {
+  #root {
+    padding: 0.5rem;
+  }
   .sections-stack { /* gridExperiment */
     display: flex;
     flex-direction: column;

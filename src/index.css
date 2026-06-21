@@ -23,7 +23,7 @@ html {
 
   /* ── Slate tones (text layer, slightly bluer) ───────────── */
   --slate-300: oklch(0.831 0.016 261);
-  /* --slate-200: oklch(0.882 0.03 254); */
+  --slate-600: oklch(0.58  0.03  254);
 
   /* ── Accent blue ────────────────────────────────────────── */
   /* --blue-200: oklch(0.832 0.08  258); */
@@ -33,25 +33,25 @@ html {
   /* --blue-700: oklch(0.395 0.198 264); */
 
   /* ── Status ─────────────────────────────────────────────── */
-  --status-danger:  oklch(0.258 0.105 1);
-  --status-success: oklch(0.297 0.094 148);
-  --status-warning: oklch(0.366 0.139 31);
+  --status-danger:  oklch(0.62 0.2 25);
+  --status-success: oklch(0.843 0.107 145);
+  --status-warning: oklch(0.35 0.06 55);
 
   /* ── Semantic surface ────────────────────────────────────── */
   --surface-panel:   oklch(0.14 0.026 265 / 0.9);
   --surface-section: var(--neutral-900);
-  --surface-header:  var(--neutral-900);
+  --surface-header:  var(--neutral-950);
   --surface-input:   oklch(0.17 0.024 261);
   --surface-backdrop:   oklch(0.13 0.027 264 / 0.72);
 
   /* ── Semantic border ─────────────────────────────────────── */
-  --border-default: var(--neutral-700);
-  --border-panel:   oklch(0.618 0.052 254 / 0.16);
+  --border-default: var(--neutral-950);
+  --border-panel:   var(--neutral-800);
 
   /* ── Semantic text ───────────────────────────────────────── */
   --text-strong: oklch(0.969 0.024 263);
   --text-body:   oklch(0.928 0.025 258);
-  --text-muted:  var(--slate-300);
+  --text-muted:  var(--slate-600);
   --text-faint:  oklch(0.882 0.03 254 / 0.72);
 
   /* ── Semantic accent ─────────────────────────────────────── */
@@ -117,7 +117,7 @@ textarea {
 }
 
 #root {
-  width: min(1320px, 100%);
+  width: min(1400px, 100%);
   margin: 0 auto;
   padding: 28px;
 }
@@ -139,10 +139,4 @@ h2 {
 h3,
 p {
   margin: 0;
-}
-
-@media (max-width: 720px) {
-  #root {
-    padding: 16px;
-  }
 }
