@@ -18,15 +18,6 @@ type ControlPanelWorkspaceProps = {
 export function ControlPanelWorkspace({
   fixtureKey,
 }: ControlPanelWorkspaceProps) {
-  const [expandedSections, setExpandedSections] = useState<
-    Record<ActionSectionKey, boolean>
-  >({
-    events: true,
-    mechanics: true,
-    membership: true,
-    gameManagement: true,
-  });
-
   const {
     controlState,
     guildMembers,
@@ -219,13 +210,6 @@ export function ControlPanelWorkspace({
     <>
       <SectionedActionPanel
         sections={visibleSections}
-        expandedSections={expandedSections}
-        onToggle={(section) =>
-          setExpandedSections((current) => ({
-            ...current,
-            [section]: !current[section],
-          }))
-        }
         onActionClick={handleActionClick}
         sectionExtras={{ events: eventsExtra, mechanics: mechanicsExtra }}
         sectionBadges={sectionBadges}

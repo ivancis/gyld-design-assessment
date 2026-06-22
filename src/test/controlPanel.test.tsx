@@ -31,6 +31,7 @@ describe("ControlPanelWorkspace", () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
+    await user.click(screen.getByRole("button", { name: /events/i }));
     await user.click(screen.getByRole("button", { name: /randomize/i }));
     await user.click(screen.getByRole("button", { name: /confirm/i }));
 
@@ -45,6 +46,7 @@ describe("ControlPanelWorkspace", () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
+    await user.click(screen.getByRole("button", { name: /rewards & punishments/i }));
     await user.click(screen.getByRole("button", { name: /^give points$/i }));
 
     expect(
@@ -56,6 +58,7 @@ describe("ControlPanelWorkspace", () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
+    await user.click(screen.getByRole("button", { name: /rewards & punishments/i }));
     await user.click(screen.getByRole("radio", { name: /^take$/i }));
     await user.click(screen.getByRole("button", { name: /^take points$/i }));
 
