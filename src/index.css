@@ -13,54 +13,70 @@ html {
   --neutral-100: oklch(0.961 0.003 255);
   --neutral-200: oklch(0.921 0.006 255);
   --neutral-300: oklch(0.867 0.009 255);
-  /* --neutral-400: oklch(0.703 0.013 255); */
-  /* --neutral-500: oklch(0.544 0.015 255); */
+  --neutral-400: oklch(0.703 0.013 255);
+  --neutral-500: oklch(0.544 0.015 255);
+  --neutral-600: oklch(0.396 0.016 264);
   --neutral-700: oklch(0.374 0.014 255);
+  --neutral-750: oklch(0.300 0.017 255);;
   --neutral-800: oklch(0.261 0.017 255);
+  --neutral-850: oklch(0.22 0.018 255);
   --neutral-900: oklch(0.179 0.013 255);
   --neutral-950: oklch(0.09  0.026 265);
 
   /* ── Slate tones (text layer, slightly bluer) ───────────── */
   --slate-300: oklch(0.831 0.016 261);
-  /* --slate-200: oklch(0.882 0.03 254); */
+  --slate-600: oklch(0.58  0.03  254);
 
   /* ── Accent blue ────────────────────────────────────────── */
   /* --blue-200: oklch(0.832 0.08  258); */
   --blue-300: oklch(0.768 0.119 258);
   /* --blue-400: oklch(0.67  0.18  261); */
   --blue-600: oklch(0.488 0.243 264);
-  /* --blue-700: oklch(0.395 0.198 264); */
+  --blue-800: oklch(35.781% 0.18732 263.366 / 0.1);
+  /* ── Accent red ────────────────────────────────────────── */
+  /* --red-700: oklch(0.395 0.198 264); */
+  --red-300: oklch(0.7 0.15 30);
+  --red-600: oklch(0.45 0.18 15);
+  /* ── Accent green ────────────────────────────────────────── */
+  --green-300: oklch(0.75 0.12 170);
+  --green-600: oklch(0.5 0.16 158);
 
   /* ── Status ─────────────────────────────────────────────── */
-  --status-danger:  oklch(0.258 0.105 22);
-  --status-success: oklch(0.297 0.094 148);
-  --status-warning: oklch(0.366 0.139 31);
+  --status-dangerSoft:  oklch(0.503 0.172 25 / 0.3);
+  --status-danger:  oklch(0.503 0.172 25);
+  --status-dangerText:  oklch(0.933 0.063 25);
+  --status-successSoft: oklch(0.912 0.068 165 / 0.3);
+  --status-success: oklch(0.912 0.068 165);
+  --status-successText: oklch(0.175 0.032 165);
+  --status-warning: oklch(0.788 0.177 75);
+  --status-warningText: oklch(0.193 0.027 75);
 
   /* ── Semantic surface ────────────────────────────────────── */
   --surface-panel:   oklch(0.14 0.026 265 / 0.9);
   --surface-section: var(--neutral-900);
-  --surface-header:  var(--neutral-800);
+  --surface-header:  var(--neutral-950);
   --surface-input:   oklch(0.17 0.024 261);
   --surface-backdrop:   oklch(0.13 0.027 264 / 0.72);
 
   /* ── Semantic border ─────────────────────────────────────── */
-  --border-default: var(--neutral-700);
-  --border-panel:   oklch(0.618 0.052 254 / 0.16);
+  --border-default: var(--neutral-950);
+  --border-panel:   var(--neutral-800);
 
   /* ── Semantic text ───────────────────────────────────────── */
   --text-strong: oklch(0.969 0.024 263);
   --text-body:   oklch(0.928 0.025 258);
-  --text-muted:  var(--slate-300);
+  --text-muted:  var(--slate-600);
   --text-faint:  oklch(0.882 0.03 254 / 0.72);
 
   /* ── Semantic accent ─────────────────────────────────────── */
   --accent-primary: var(--blue-600);
+  --accent-primarySoft:  oklch(0.768 0.119 258 / 0.3);
   --accent-eyebrow: var(--blue-300);
 
   /* ── Border radius ──────────────────────────────────────── */
-  --radius-sm:   0.4rem;
-  --radius-md:   0.65rem;
-  --radius-lg:   0.75rem;
+  --radius-sm:   0.2rem;
+  --radius-md:   0.6rem;
+  --radius-lg:   1rem;
   --radius-pill: 999px;
 
   /* ── Motion ─────────────────────────────────────────────── */
@@ -96,6 +112,21 @@ html {
 
 * {
   box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-800) var(--border-default);
+
+  /* Webkit */
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--surface-panel);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: var(--radius-sm);
+  }
 }
 
 html,
@@ -115,12 +146,6 @@ textarea {
   font: inherit;
 }
 
-#root {
-  width: min(1320px, 100%);
-  margin: 0 auto;
-  padding: 28px;
-}
-
 h1 {
   margin: 0 0 8px;
   font-size: clamp(2rem, 3vw, 3.1rem);
@@ -138,10 +163,4 @@ h2 {
 h3,
 p {
   margin: 0;
-}
-
-@media (max-width: 720px) {
-  #root {
-    padding: 16px;
-  }
 }

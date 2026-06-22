@@ -39,6 +39,8 @@ export type EventConstruct = {
 export type LiveEventState = {
   state: "in-progress";
   seasonEventId: number;
+  eventType: string;
+  startedAt: number;
 } | null;
 
 export type ControlState = {
@@ -70,11 +72,10 @@ export type ModalState =
   | { type: "startEvent" }
   | { type: "givePoints" }
   | { type: "takePoints" }
-  | { type: "placeholder"; actionLabel: string }
+  | { type: "placeholder"; actionLabel: string; onConfirm?: () => void }
   | null;
 
 export type StartEventState = {
-  isQuickStart: boolean;
   eventType: string;
   selectedFamilyA: string;
   selectedFamilyB: string;

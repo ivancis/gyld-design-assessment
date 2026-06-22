@@ -39,6 +39,8 @@ export const fixturePresets: Record<FixtureKey, FixturePreset> = {
       liveEventState: {
         state: "in-progress",
         seasonEventId: 818,
+        eventType: "boss",
+        startedAt: 0,
       },
       banner: null,
     },

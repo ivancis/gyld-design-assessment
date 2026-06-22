@@ -4,6 +4,7 @@ import { cloneFixtureControlState } from "../fixtures";
 import {
   mockEventConstructs,
   mockFamilies,
+  mockGuild,
   mockGuildMembers,
 } from "../mockData";
 import type {
@@ -16,8 +17,7 @@ import type {
 } from "../types";
 
 const initialStartEventState: StartEventState = {
-  isQuickStart: true,
-  eventType: mockEventConstructs[0]?.tag ?? "boss",
+  eventType: "",
   selectedFamilyA: mockFamilies[0]?.identifier ?? "north-house",
   selectedFamilyB: mockFamilies[1]?.identifier ?? "south-house",
   customMessage: "",
@@ -48,6 +48,11 @@ export function useControlPanelState(fixtureKey: FixtureKey) {
   const [givePointsState, setGivePointsState] = useState(initialGivePointsState);
   const [takePointsState, setTakePointsState] = useState(initialTakePointsState);
 
+  const closeEvent = (message: string) => {
+    setControlState((c) => ({ ...c, liveEventState: null, banner: { message, tone: "pause" as const, } }));
+    setModalState(null);
+  };
+
   const handleActionClick = (action: ActionDefinition) => {
     switch (action.action) {
       case "startEvent":
@@ -60,12 +65,10 @@ export function useControlPanelState(fixtureKey: FixtureKey) {
         setModalState({ type: "takePoints" });
         return;
       case "endEvent":
+        setModalState({ type: "placeholder", actionLabel: action.name, onConfirm: () => closeEvent("Event ended.") });
+        return;
       case "timeoutEvent":
-        if (!controlState.liveEventState) return;
-        setControlState((current) => ({
-          ...current,
-          liveEventState: null,
-        }));
+        setModalState({ type: "placeholder", actionLabel: action.name, onConfirm: () => closeEvent("Event timed out.") });
         return;
       case "pauseGame":
         setControlState((current) => ({
@@ -91,20 +94,22 @@ export function useControlPanelState(fixtureKey: FixtureKey) {
   };
 
   const startQuickEvent = () => {
+    const construct = mockEventConstructs[Math.floor(Math.random() * mockEventConstructs.length)];
+    const now = Date.now();
     setControlState((current) => ({
       ...current,
-      liveEventState: { state: "in-progress", seasonEventId: Date.now() },
-      // Starting an event should supersede prior banner states.
+      liveEventState: { state: "in-progress", seasonEventId: now, eventType: construct.tag, startedAt: now },
       banner: null,
     }));
     setModalState(null);
   };
 
   const startCustomEvent = () => {
+    const construct = mockEventConstructs.find((e) => e.tag === startEventState.eventType) ?? mockEventConstructs[0];
+    const now = Date.now();
     setControlState((current) => ({
       ...current,
-      liveEventState: { state: "in-progress", seasonEventId: Date.now() },
-      // Starting an event should supersede prior banner states.
+      liveEventState: { state: "in-progress", seasonEventId: now, eventType: construct.tag, startedAt: now },
       banner: null,
     }));
     setModalState(null);
@@ -140,17 +145,13 @@ export function useControlPanelState(fixtureKey: FixtureKey) {
       }),
     );
 
+    const pts = mockGuild.terms.points_synonym_plural;
+    const mbs = mockGuild.terms.member_synonym_plural;
+    const who = state.recipientType === "all" ? `all ${mbs}` : `selected ${mbs}`;
     setControlState((current) => ({
       ...current,
       banner: {
-        message:
-          mode === "give"
-            ? `${amount} points were given to ${
-                state.recipientType === "all" ? "all members" : "selected recipients"
-              }.`
-            : `${amount} points were taken from ${
-                state.recipientType === "all" ? "all members" : "selected recipients"
-              }.`,
+        message: mode === "give" ? `${amount} ${pts} were given to ${who}.` : `${amount} ${pts} were taken from ${who}.`,
         tone: mode,
       },
     }));

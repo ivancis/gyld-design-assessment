@@ -7,12 +7,20 @@ import type {
 
 export const mockGuild = {
   name: "Scorpio Plays",
+  points_icon: "🪙",
   terms: {
     points_synonym_singular: "point",
     points_synonym_plural: "points",
+    points_give_verb: "give",
+    points_take_verb: "take",
+    points_give_preposition: "to",
+    points_take_preposition: "from",
     family_synonym_singular: "family",
     family_synonym_plural: "families",
     season_synonym_singular: "season",
+    member_synonym_plural: "members",
+    lottery_synonym_singular: "lottery",
+    boost_synonym_singular: "boost",
   },
 };
 
@@ -74,9 +82,17 @@ export const mockActionSections: ActionSection[] = [
     icon: "⚡",
     actions: [
       { name: "Run Lottery", action: "runLottery", icon: "🎟️" },
-      { name: "Point Boost", action: "pointBoost", icon: "✖️2" },
-      { name: "Give Points", action: "givePoints", icon: "🪙" },
-      { name: "Take Points", action: "takePoints", icon: "⚠️" },
+      { name: "Point Boost", action: "pointBoost", icon: "✖️" },
+    ],
+  },
+  {
+    key: "gameManagement",
+    title: "Game Management",
+    icon: "🎮",
+    actions: [
+      { name: "Start New Season", action: "endSeason", icon: "🗓️" },
+      { name: "Pause Game", action: "pauseGame", icon: "⏸️" },
+      { name: "Unpause Game", action: "unpauseGame", icon: "▶️" },
     ],
   },
   {
@@ -89,16 +105,6 @@ export const mockActionSections: ActionSection[] = [
       { name: "Manage Roles", action: "manageRoles", icon: "👥" },
       { name: "Manage Privileges", action: "managePrivileges", icon: "🛡️" },
       { name: "Blocklist", action: "manageBlocklist", icon: "⛔" },
-    ],
-  },
-  {
-    key: "gameManagement",
-    title: "Game Management",
-    icon: "🎮",
-    actions: [
-      { name: "Start New Season", action: "endSeason", icon: "🗓️" },
-      { name: "Pause Game", action: "pauseGame", icon: "⏸️" },
-      { name: "Unpause Game", action: "unpauseGame", icon: "▶️" },
     ],
   },
 ];

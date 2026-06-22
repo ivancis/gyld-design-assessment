@@ -27,18 +27,15 @@ describe("ControlPanelWorkspace", () => {
     ).toBeInTheDocument();
   });
 
-  it("swaps start event for end and timeout actions after quick start", async () => {
+  it("swaps start event form for live-event view after randomize", async () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
-    await user.click(screen.getByRole("button", { name: /^start event$/i }));
-    await user.click(
-      screen.getAllByRole("button", { name: /^start event$/i })[1],
-    );
+    await user.click(screen.getByRole("button", { name: /events/i }));
+    await user.click(screen.getByRole("button", { name: /randomize/i }));
+    await user.click(screen.getByRole("button", { name: /confirm/i }));
 
-    expect(
-      screen.queryByRole("button", { name: /^start event$/i }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("combobox", { name: /event type/i })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /end event/i })).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /timeout event/i }),
@@ -49,8 +46,8 @@ describe("ControlPanelWorkspace", () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
+    await user.click(screen.getByRole("button", { name: /rewards & punishments/i }));
     await user.click(screen.getByRole("button", { name: /^give points$/i }));
-    await user.click(screen.getAllByRole("button", { name: /^give points$/i })[1]);
 
     expect(
       screen.getByText(/69 points were given to all members\./i),
@@ -61,8 +58,9 @@ describe("ControlPanelWorkspace", () => {
     const user = userEvent.setup();
     render(<ControlPanelWorkspace fixtureKey="default" />);
 
+    await user.click(screen.getByRole("button", { name: /rewards & punishments/i }));
+    await user.click(screen.getByRole("radio", { name: /^take$/i }));
     await user.click(screen.getByRole("button", { name: /^take points$/i }));
-    await user.click(screen.getAllByRole("button", { name: /^take points$/i })[1]);
 
     expect(
       screen.getByText(/50 points were taken from all members\./i),

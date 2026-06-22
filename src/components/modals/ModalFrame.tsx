@@ -16,16 +16,16 @@ export function ModalFrame({
 }: ModalFrameProps) {
   return (
     <>
-      <div className="modal-header">
+      <div className="modal__header">
         <div>
-          <p className="modal-eyebrow">{eyebrow}</p>
+          <p className="modal__eyebrow">{eyebrow}</p>
           <h2>{title}</h2>
         </div>
-        <button type="button" className="modal-close" onClick={onClose} title="Close">
+        <button type="button" className="icon-btn" onClick={onClose} title="Close" autoFocus>
           <X />
         </button>
       </div>
-      <div className="wizard-body">{children}</div>
+      <div className="modal__body">{children}</div>
     </>
   );
 }
